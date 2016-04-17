@@ -10,11 +10,11 @@
 int main(int argc , char *argv[]) {
     int connection_socket, connection_port;
     struct sockaddr_in server;
-    char message[1000], server_reply[2000], connection_addr;
+    char message[1000], server_reply[2000], *connection_addr;
 
     // Connection address and port can be set an runtime.
     connection_addr = (argc > 2) ? argv[2] : SOCKET_INETADDRESS;
-    connection_port = (argc > 1) ? argv[1] : SOCKET_ADDRESS;
+    connection_port = (argc > 1) ? (int) argv[1] : SOCKET_ADDRESS;
 
     // Information message about the current instance.
     printf(

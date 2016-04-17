@@ -17,8 +17,8 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in server , client;
 
     // Connection port can be set at runtime.
-    connection_port = (argc > 1) ? argv[1] : SOCKET_ADDRESS;
-    
+    connection_port = (argc > 1) ? (int) argv[1] : SOCKET_ADDRESS;
+
     // Information message about the current instance.
     printf("Initiating server on port: %u with PID: %u\n", connection_port, (int) getpid());
 

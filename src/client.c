@@ -1,16 +1,26 @@
-#include<stdio.h>       //printf
-#include<string.h>      //strlen
-#include<sys/socket.h>  //socket
-#include<arpa/inet.h>   //inet_addr
+#include <stdio.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
 #include <unistd.h>
 
 #define SOCKET_ADDRESS 5555
 #define SOCKET_INETADDRESS "127.0.0.1"
 
 int main(int argc , char *argv[]) {
-    int connection_socket;
+    int connection_socket, connection_port;
     struct sockaddr_in server;
-    char message[1000] , server_reply[2000];
+    char message[1000], server_reply[2000], connection_addr;
+
+    // Connection address and port can be set an runtime.
+    connection_addr = (argc > 2) ? argv[2] : SOCKET_INETADDRESS;
+    connection_port = (argc > 1) ? argv[1] : SOCKET_ADDRESS;
+
+    // Information message about the current instance.
+    printf(
+        "Creating client instance for a server at: %s:%u with PID: %u\n",
+        connection_addr, connection_port, (int) getpid()
+    );
 
     // Create the socket.
     connection_socket = socket(AF_INET , SOCK_STREAM , 0);

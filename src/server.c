@@ -12,9 +12,15 @@
 
 int main(int argc, char *argv[]) {
     // Descriptors of the client and the server socket.
-    int server_socket, client_socket, *tmp_socket, accept_structure;
+    int server_socket, client_socket, *tmp_socket, accept_structure, connection_port;
     // sockaddr_in structures for client and server.
     struct sockaddr_in server , client;
+
+    // Connection port can be set at runtime.
+    connection_port = (argc > 1) ? argv[1] : SOCKET_ADDRESS;
+    
+    // Information message about the current instance.
+    printf("Initiating server on port: %u with PID: %u\n", connection_port, (int) getpid());
 
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if(server_socket == -1) {

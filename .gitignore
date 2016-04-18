@@ -34,3 +34,7 @@
 # Mac OS X files
 .DS_Store
 src/libs
+
+# TiViMa specifics
+dist/server_*
+dist/client_*

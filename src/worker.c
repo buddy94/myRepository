@@ -1,8 +1,8 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<unistd.h>
-#include<sys/socket.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
 
 void *connection_handler(void *socket_descriptor) {
     int connection_socket = *(int *) socket_descriptor;
